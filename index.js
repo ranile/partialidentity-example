@@ -65,6 +65,21 @@ async function handle() {
     const data = new TextEncoder().encode("hello");
     const signed = await delegationIdentity.sign(data);
 
+    // on server
+    try {
+        const partial = PartialDelegationIdentity.fromDelegation(delegationIdentity.getPublicKey(), delegation);
+        console.log('partial identity principal', partial.getPrincipal().toText());
+    } catch (e) {
+        console.error('Failed to create partial identity from delegation and get principal', e);
+    }
+
+    try {
+        const partial = PartialDelegationIdentity.fromDelegation(signIdentity.getPublicKey(), delegation);
+        console.log('partial identity principal', partial.getPrincipal().toText());
+    } catch (e) {
+        console.error('Failed to create partial identity from delegation and get principal', e);
+    }
+
     try {
         verifyBasicSignature(
             data,
