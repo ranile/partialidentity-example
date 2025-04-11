@@ -24,7 +24,7 @@ interface _SERVICE {
   whoami: ActorMethod<[], Principal>;
 }
 
-class Server {
+class NativeApp {
   signIdentity: Ed25519KeyIdentity = Ed25519KeyIdentity.fromSecretKey(
     bufFromBufLike(new Uint8Array(32))
   );
@@ -82,7 +82,7 @@ class Server {
   }
 }
 
-const server = new Server();
+const nativeApp = new NativeApp();
 
 class Frontend {
   partialIdentity: PartialIdentity;
@@ -126,8 +126,8 @@ class Frontend {
     const delegation = identity.delegation;
 
     const delegationString = JSON.stringify(delegation.toJSON());
-    server.makeDelegationIdentity(delegationString);
+    nativeApp.makeDelegationIdentity(delegationString);
   }
 }
 
-const frontend = await Frontend.create(toHex(server.getPublicKey().toDer()));
+const frontend = await Frontend.create(toHex(nativeApp.getPublicKey().toDer()));
