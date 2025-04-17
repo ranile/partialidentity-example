@@ -15,7 +15,9 @@
     "@dfinity/agent": "^2.4.0",
     "@dfinity/auth-client": "^2.4.0",
     "@dfinity/identity": "^2.4.0",
-    "@dfinity/principal": "^2.4.0"
+    "@dfinity/principal": "^2.4.0",
+    "@dfinity/standalone-sig-verifier-web": "^1.0.0",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "vite": "^6.2.6"
